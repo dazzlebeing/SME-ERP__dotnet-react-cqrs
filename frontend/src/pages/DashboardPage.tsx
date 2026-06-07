@@ -5,10 +5,11 @@ import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend,
   PieChart, Pie, Cell
 } from 'recharts'
-import { FileText, Truck, Receipt, CreditCard, ShoppingCart, Users, Wallet, Building2 } from 'lucide-react'
+import { FileText, Truck, Receipt, CreditCard, ShoppingCart, Users, Wallet, Building2, Settings } from 'lucide-react'
 import api from '../lib/api'
 import { fmt, MONTHS } from '../lib/formatters'
 import { Card, CardHeader, Badge, Loader } from '../components/ui'
+import { useAuth } from '../store/authStore'
 
 type StatTab = 'bills' | 'purchase' | 'gatepasses' | 'sales' | 'payments'
 
@@ -56,7 +57,10 @@ const TAB_CONFIG: Record<StatTab, { label: string; color: string }> = {
 
 export default function DashboardPage() {
   const year = new Date().getFullYear()
+  const { user } = useAuth()
   const [statTab, setStatTab] = useState<StatTab>('bills')
+  const today = new Date().toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })
+  const firstName = (user?.fullName || user?.email || 'there').split(/[ @]/)[0]
 
   const { data: stats, isLoading: sl } = useQuery({
     queryKey: ['dashboard-stats'],
@@ -135,9 +139,24 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-xl font-bold text-slate-800">Dashboard</h1>
-        <p className="text-sm text-slate-500">Statistics {year} — Shree Engineering Works</p>
+      {/* Branded hero header — ties the login theme into the workspace */}
+      <div className="relative overflow-hidden rounded-2xl bg-[#080f1e] px-6 py-7 sm:px-8">
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{ background: 'radial-gradient(ellipse 50% 80% at 88% 50%, rgba(249,115,22,0.16) 0%, transparent 70%)' }}
+        />
+        <Settings
+          size={150}
+          className="pointer-events-none absolute -right-6 -top-8 animate-[gear-cw_18s_linear_infinite] text-white/[0.04]"
+        />
+        <style>{`@keyframes gear-cw { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
+        <div className="relative">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/35">{today}</p>
+          <h1 className="mt-1 text-2xl font-black tracking-tight text-white sm:text-3xl">
+            Welcome back, <span className="text-orange-500">{firstName}</span>
+          </h1>
+          <p className="mt-1 text-sm text-white/50">Statistics {year} — Shree Engineering Works</p>
+        </div>
       </div>
 
       {/* Statistics card with tabs (matches PHP project layout) */}
