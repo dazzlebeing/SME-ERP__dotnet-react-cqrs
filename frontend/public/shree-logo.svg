@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- 12-tooth gear polygon (alternating outer r=47 and inner r=38) -->
+  <polygon fill="#0f172a" points="
+    50,3 59.83,13.30 73.50,9.30 76.87,23.13
+    90.70,26.50 86.70,40.16 97,50 86.70,59.84
+    90.70,73.50 76.87,76.87 73.50,90.70 59.83,86.70
+    50,97 40.17,86.70 26.50,90.70 23.13,76.87
+    9.30,73.50 13.30,59.84 3,50 13.30,40.16
+    9.30,26.50 23.13,23.13 26.50,9.30 40.17,13.30
+  "/>
+  <!-- Inner white hub -->
+  <circle cx="50" cy="50" r="29" fill="white"/>
+  <!-- श्री Devanagari text -->
+  <text x="50" y="64" text-anchor="middle"
+        font-size="28"
+        font-family="Noto Serif Devanagari, Mangal, Lohit Devanagari, serif"
+        fill="#0f172a"
+        font-weight="bold">श्री</text>
+</svg>

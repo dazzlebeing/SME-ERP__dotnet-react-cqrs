@@ -1,0 +1,61 @@
+# ───────────────────────────── Secrets / Local config ─────────────────────────
+# Real environment file with secrets — copy from .env.example and fill in.
+.env
+.env.local
+.env.*.local
+*.local.json
+# ASP.NET user-secrets are stored outside the repo by design; nothing to ignore here.
+
+# ───────────────────────────── .NET / C# ──────────────────────────────────────
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+artifacts/
+project.lock.json
+*.nupkg
+*.snupkg
+# EF Core SQLite local db files (if any)
+*.db
+*.db-shm
+*.db-wal
+
+# ───────────────────────────── Node / Frontend ────────────────────────────────
+node_modules/
+dist/
+dist-ssr/
+.vite/
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.eslintcache
+
+# ───────────────────────────── IDE / Editor ───────────────────────────────────
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json.example
+*.swp
+*.swo
+*~
+
+# ───────────────────────────── OS ─────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ───────────────────────────── Logs / temp ────────────────────────────────────
+*.log
+logs/
+tmp/
+temp/
+
+# ───────────────────────────── Claude / agent worktrees ───────────────────────
+.claude/

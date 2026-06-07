@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  shree-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: shree-erp-sql
+    environment:
+      SA_PASSWORD: "${DB_PASSWORD}"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+    ports:
+      - "${DB_PORT:-1434}:1433"
+    volumes:
+      - shree_db_data:/var/opt/mssql
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P \"${DB_PASSWORD}\" -Q \"SELECT 1\" -C || exit 1"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 30s
+    networks:
+      - shree-network
+
+  shree-redis:
+    image: redis:7-alpine
+    container_name: shree-erp-redis
+    ports:
+      - "${REDIS_PORT:-6380}:6379"
+    volumes:
+      - shree_redis_data:/data
+    networks:
+      - shree-network
+
+  shree-api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: shree-erp-api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=shree-db,1433;Database=${DB_NAME};User Id=sa;Password=${DB_PASSWORD};TrustServerCertificate=True;MultipleActiveResultSets=true
+      - Jwt__Secret=${JWT_SECRET}
+      - Jwt__Issuer=${JWT_ISSUER}
+      - Jwt__Audience=${JWT_AUDIENCE}
+      - Jwt__ExpiryMinutes=${JWT_EXPIRY_MINUTES}
+      - Jwt__RefreshTokenDays=${REFRESH_TOKEN_DAYS}
+      - Redis__Connection=shree-redis:6379
+    ports:
+      - "5050:8080"
+    depends_on:
+      shree-db:
+        condition: service_healthy
+      shree-redis:
+        condition: service_started
+    networks:
+      - shree-network
+
+volumes:
+  shree_db_data:
+  shree_redis_data:
+
+networks:
+  shree-network:
+    driver: bridge
