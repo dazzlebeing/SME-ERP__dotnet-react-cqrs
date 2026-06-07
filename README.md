@@ -7,6 +7,8 @@ A full-stack ERP application built to replace the legacy PHP system with React 1
 >
 > **New here? Read [SETUP.md](./SETUP.md) first** — it has the full step-by-step setup, a **guided code tour ("where to look first")**, and a **"where to change things"** table.
 >
+> **No Docker on your machine?** Use [RUN-WITHOUT-DOCKER.md](./RUN-WITHOUT-DOCKER.md) — runs the whole app with just .NET, Node, and the SQL that ships with Visual Studio.
+>
 > **Architecture & feature docs** live in [`docs/`](./docs): the [page inventory](./docs/old-project-page-inventory.md), the [feature audit](./docs/missing-features-audit.md), and the [master plan](./docs/master-plan.md).
 
 ## Stack

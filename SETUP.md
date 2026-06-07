@@ -10,6 +10,8 @@
 
 You need **Docker Desktop** running and **Node.js 20+**. (You do *not* need the .NET SDK for this path — Docker builds the API.)
 
+> **Don't have Docker?** Use **[RUN-WITHOUT-DOCKER.md](./RUN-WITHOUT-DOCKER.md)** instead — it runs everything with just .NET, Node, and the SQL LocalDB that comes with Visual Studio.
+
 ```bash
 git clone https://gitlab.com/kumar_sandeep_group/Shree-project.git
 cd Shree-project
