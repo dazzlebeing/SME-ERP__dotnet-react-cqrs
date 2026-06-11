@@ -59,3 +59,12 @@ temp/
 
 # ───────────────────────────── Claude / agent worktrees ───────────────────────
 .claude/
+
+# ───────────────────────────── Local-only working / study docs ────────────────
+# Kept on disk but never pushed to the public repo (reviewers shouldn't see these).
+docs/
+docsforbuilding/
+PROJECT_WALKTHROUGH.md
+SDLC_AND_TERMINOLOGY.md
+INTERVIEW_QA.md
+MINDMAP.md

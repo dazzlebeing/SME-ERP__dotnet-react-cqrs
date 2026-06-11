@@ -132,11 +132,6 @@ on the frontend.
 | 6 | `components/layout/` | `AppLayout` + `Sidebar` + `TopBar` (the logout/change-password menus live here). |
 | 7 | `components/ui/index.tsx` | Design-system primitives: `Button`, `Modal`, `Table`, `SortableTh`, `SearchBox`, `ConfirmDialog`. |
 
-For a complete feature inventory and how it maps to the legacy PHP app, see:
-- `docs/old-project-page-inventory.md` — every page/endpoint in the original PHP system
-- `docs/missing-features-audit.md` — what's done, what's pending, and why
-- `docs/master-plan.md` — the original architecture plan
-
 ---
 
 ## 4. Where to change common things
@@ -208,7 +203,6 @@ Shree-project/
 │       ├── hooks/                # useCrud (shared list/save/delete)
 │       ├── store/                # Zustand auth store
 │       └── lib/                  # axios instance, formatters
-├── docs/                         # architecture plan, feature audit, page inventory
 ├── docker-compose.yml
 ├── .env.example                  # copy to .env
 ├── README.md                     # overview + manual testing guide

@@ -150,4 +150,3 @@ It runs three ways: **full Docker**, **Docker for the database only**, or — wi
 | **This file** | running **without Docker** (LocalDB) |
 | [SETUP.md](./SETUP.md) | running **with Docker** + a guided code tour ("where to look first") |
 | [README.md](./README.md) | project overview + full manual testing walkthrough |
-| `docs/` folder | architecture plan, feature audit, and the old-PHP page inventory |
